@@ -80,22 +80,22 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ achievement, index })
     >
       <div className="space-y-4">
         {/* Outline Icon */}
-        <div className="w-10 h-10 rounded-lg bg-[#0F766E]/10 border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] group-hover:scale-105 transition-transform duration-200">
+        <div className="w-10 h-10 rounded-lg bg-[#0F766E]/10 border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] dark:text-[#5EEAD4] group-hover:scale-105 transition-transform duration-200">
           <Icon className="w-5 h-5" />
         </div>
 
         {/* Large Stat Number */}
         <div>
-          <div className="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
+          <div className="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight text-[#0F172A] dark:text-white">
             {achievement.stat}
           </div>
-          <h3 className="text-base font-bold text-[#0F172A] dark:text-[#F8FAFC] mt-1">
+          <h3 className="text-base font-bold text-[#0F172A] dark:text-white mt-1">
             {achievement.title}
           </h3>
         </div>
 
         {/* One-Line Description */}
-        <p className="text-xs sm:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
           {achievement.description}
         </p>
       </div>
@@ -116,17 +116,17 @@ export const TrustAchievements = () => {
           className="space-y-3 max-w-3xl"
         >
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0F766E]">
+            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0F766E] dark:text-[#5EEAD4]">
               ACHIEVEMENTS
             </span>
             <span className="h-[1px] w-8 bg-[#0F766E]/30" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-white">
             Numbers That Reflect My Journey
           </h2>
 
-          <p className="text-base sm:text-lg text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
             A quick overview of measurable achievements across problem solving, leadership, learning and real-world experience.
           </p>
         </motion.div>

@@ -4,11 +4,11 @@ import { Layout } from '../components/Layout';
 import { Loading } from '../components/Loading';
 
 const Home = lazy(() => import('../pages/Home'));
+const About = lazy(() => import('../pages/About'));
 const Projects = lazy(() => import('../pages/Projects'));
 const Certifications = lazy(() => import('../pages/Certifications'));
 const Experience = lazy(() => import('../pages/Experience'));
 const Contact = lazy(() => import('../pages/Contact'));
-const Resume = lazy(() => import('../pages/Resume'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 export const AppRoutes = () => {
@@ -17,11 +17,11 @@ export const AppRoutes = () => {
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -4,12 +4,12 @@ import { getFirestore, Firestore } from 'firebase/firestore';
 
 // Firebase configuration template - ready for future environment variables or config file
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "",
+  apiKey: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_API_KEY || "",
+  authDomain: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_AUTH_DOMAIN || "",
+  projectId: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_PROJECT_ID || "",
+  storageBucket: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_STORAGE_BUCKET || "",
+  messagingSenderId: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_MESSAGING_SENDER_ID || "",
+  appId: (import.meta as unknown as { env: Record<string, string> }).env?.VITE_FIREBASE_APP_ID || "",
 };
 
 export const isFirebaseConfigured = Boolean(

@@ -3,6 +3,7 @@ import { TrustAchievements } from '../components/TrustAchievements';
 import { FeaturedProjects } from '../components/FeaturedProjects';
 import { TechStack } from '../components/TechStack';
 import { About } from '../components/About';
+import { HomeCTA } from '../components/HomeCTA';
 
 export const Home = () => {
   return (
@@ -21,6 +22,9 @@ export const Home = () => {
 
       {/* Recruiter-focused About Me Section */}
       <About />
+
+      {/* Final Call to Action Section */}
+      <HomeCTA />
     </div>
   );
 };
