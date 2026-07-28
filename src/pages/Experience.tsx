@@ -15,7 +15,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-saiket',
     role: 'Software Development Intern',
     company: 'Saiket Systems',
-    duration: '2024',
+    duration: '2025',
     location: 'Remote',
     bullets: [
       'Engineered responsive web applications and modular UI components using React and TypeScript.',
@@ -27,36 +27,12 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     id: 'exp-codealpha',
     role: 'App Development Intern',
     company: 'CodeAlpha',
-    duration: '2024',
+    duration: '2025',
     location: 'Remote',
     bullets: [
       'Developed cross-platform web and mobile features focused on high performance and clean UX.',
       'Refactored application state management to reduce unnecessary re-renders and load times.',
       'Implemented responsive UI layouts and resolved critical bugs across multiple client devices.',
-    ],
-  },
-  {
-    id: 'exp-leadership',
-    role: 'Technical Project Lead',
-    company: 'LineX, EduComics & QuadX',
-    duration: '2023 – Present',
-    location: 'Baramati, India',
-    bullets: [
-      'Architected AI-driven full-stack web products with Gemini API and Firebase backends.',
-      'Led student engineering teams through agile design sprints, code reviews, and deployments.',
-      'Designed scalable application architecture and automated build pipelines for high uptime.',
-    ],
-  },
-  {
-    id: 'exp-sih',
-    role: 'Smart India Hackathon Finalist',
-    company: 'Ministry of Education, Govt. of India',
-    duration: '2023 – 2024',
-    location: 'India',
-    bullets: [
-      'Built functional software prototypes under strict hackathon deadlines for real-world civic problems.',
-      'Secured GDG Hackathon Top 10 finish and 1st Rank in institutional Power BI Data Analytics.',
-      'Designed automated data processing pipelines and interactive analytics dashboards.',
     ],
   },
 ];
