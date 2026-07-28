@@ -134,19 +134,9 @@ export const Contact: React.FC = () => {
         </a>
       </motion.div>
 
-      {/* Call-to-action buttons */}
-      <div className="pt-2 flex flex-wrap items-center gap-3">
+      {/* Resume Download Action */}
+      <div className="pt-2 flex justify-start">
         <DownloadResumeButton />
-        <a
-          href="mailto:yadusonam08@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Sonam,%20I%20found%20your%20portfolio."
-          target="_self"
-          rel="noopener noreferrer"
-          className="btn-primary"
-          aria-label="Contact Sonam Yadav via email"
-        >
-          <Mail className="w-3.5 h-3.5 shrink-0" />
-          <span>Contact Me (Email)</span>
-        </a>
       </div>
     </div>
   );

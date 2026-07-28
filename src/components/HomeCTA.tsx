@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Github, Code2 } from 'lucide-react';
+import { Linkedin, Github, Code2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { DownloadResumeButton } from './DownloadResumeButton';
 
@@ -28,17 +28,6 @@ export const HomeCTA: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <a
-            href="mailto:yadusonam08@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Sonam,%20I%20found%20your%20portfolio."
-            target="_self"
-            rel="noopener noreferrer"
-            className="btn-primary"
-            aria-label="Send email to Sonam Yadav at yadusonam08@gmail.com"
-          >
-            <Mail className="w-3.5 h-3.5 shrink-0" />
-            <span>Email Me</span>
-          </a>
-
           <DownloadResumeButton />
 
           <a

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, User } from 'lucide-react';
+import { ArrowRight, User } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { DownloadResumeButton } from './DownloadResumeButton';
 import { QuickHighlights } from './TrustAchievements';
@@ -89,15 +89,6 @@ export const Hero = () => {
             </Link>
 
             <DownloadResumeButton id="hero-cta-resume" className="btn-secondary" />
-
-            <Link
-              id="hero-cta-contact"
-              to="/contact"
-              className="btn-secondary"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#055C5E]" />
-              <span>Contact Me</span>
-            </Link>
           </motion.div>
         </div>
 
