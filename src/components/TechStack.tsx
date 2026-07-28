@@ -1,184 +1,73 @@
 import React from 'react';
-import {
-  Layout,
-  Server,
-  Database,
-  Code2,
-  Sparkles,
-  Cloud,
-} from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
-interface CategoryItem {
-  id: string;
-  icon: React.ComponentType<{ className?: string }>;
+interface TechCategory {
   title: string;
-  description: string;
   skills: string[];
 }
 
-const TECH_CATEGORIES: CategoryItem[] = [
+const TECH_STACK: TechCategory[] = [
   {
-    id: 'frontend',
-    icon: Layout,
-    title: 'Frontend Development',
-    description: 'Crafting responsive, accessible, and highly interactive web applications.',
-    skills: [
-      'React',
-      'TypeScript',
-      'JavaScript',
-      'HTML',
-      'CSS',
-      'Tailwind CSS',
-      'Angular',
-    ],
+    title: 'Languages',
+    skills: ['Java', 'C++', 'Python', 'TypeScript', 'JavaScript', 'HTML/CSS'],
   },
   {
-    id: 'backend',
-    icon: Server,
-    title: 'Backend Architecture',
-    description: 'Building robust API services, serverless microservices, and application logic.',
-    skills: ['Node.js', 'Express.js', 'Firebase', 'REST APIs'],
+    title: 'Frameworks & Frontend',
+    skills: ['React', 'Angular', 'Node.js', 'Express.js', 'Tailwind CSS', 'REST APIs'],
   },
   {
-    id: 'database',
-    icon: Database,
-    title: 'Database & Persistence',
-    description: 'Managing structured, unstructured, and document-based data persistence.',
-    skills: ['Firestore', 'MongoDB', 'MySQL'],
+    title: 'Databases & Cloud',
+    skills: ['Firestore', 'MongoDB', 'MySQL', 'Firebase', 'Google Cloud Platform', 'Vercel'],
   },
   {
-    id: 'languages',
-    icon: Code2,
-    title: 'Programming Languages',
-    description: 'Core algorithmic problem solving, data structures, and typed programming.',
-    skills: ['Java', 'C++', 'Python'],
-  },
-  {
-    id: 'ai-ml',
-    icon: Sparkles,
-    title: 'Artificial Intelligence',
-    description: 'Developing ML pipelines, predictive models, and Generative AI integrations.',
-    skills: [
-      'Machine Learning',
-      'Deep Learning',
-      'TensorFlow',
-      'Scikit-learn',
-      'Prompt Engineering',
-      'Generative AI',
-    ],
-  },
-  {
-    id: 'tools-cloud',
-    icon: Cloud,
-    title: 'Tools & Cloud Infrastructure',
-    description: 'Version control, cloud platforms, modern build tools, and analytics engines.',
-    skills: [
-      'Git',
-      'GitHub',
-      'Vercel',
-      'VS Code',
-      'Figma',
-      'Power BI',
-      'Google Cloud',
-      'AWS',
-    ],
+    title: 'AI & Engineering Tools',
+    skills: ['Machine Learning', 'TensorFlow', 'Scikit-Learn', 'Google AI Studio', 'Git & GitHub', 'Power BI'],
   },
 ];
 
-interface TechCardProps {
-  category: CategoryItem;
-  index: number;
-}
-
-const TechCard: React.FC<TechCardProps> = ({ category, index }) => {
-  const Icon = category.icon;
+export const TechStack: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.35, delay: index * 0.08, ease: [0.25, 0.1, 0.25, 1.0] }}
-      className="saas-card p-6 sm:p-7 flex flex-col justify-between h-full space-y-6 hover:-translate-y-0.5 hover:border-[#0F766E]/40 hover:shadow-md transition-all duration-200 group"
-    >
-      <div className="space-y-4">
-        {/* Category Header with Icon & Title */}
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#0F766E]/10 border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] dark:text-[#5EEAD4] shrink-0 group-hover:scale-105 transition-transform duration-200">
-            <Icon className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
-              {category.title}
-            </h3>
-            <span className="text-[10px] font-mono text-[#0F766E] dark:text-[#5EEAD4] uppercase tracking-wider font-semibold">
-              {category.skills.length} Technical Skills
-            </span>
-          </div>
-        </div>
-
-        {/* Short Description */}
-        <p className="text-xs sm:text-sm text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
-          {category.description}
+    <section id="tech-stack-section" className="py-8 space-y-6">
+      <div className="space-y-1">
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111827] dark:text-[#FAFAFA]">
+          Technical Capabilities
+        </h2>
+        <p className="text-sm text-[#6B7280] dark:text-[#A1A1AA]">
+          Technologies and tools I use to build scalable systems and AI products.
         </p>
       </div>
 
-      {/* Technology Pills Grid */}
-      <div className="pt-3 border-t border-[#E2E8F0]/80 dark:border-[#374151]">
-        <div className="flex flex-wrap gap-2">
-          {category.skills.map((skill) => (
-            <span
-              key={skill}
-              className="px-3 py-1.5 rounded-lg bg-[#F8FAFC] dark:bg-[#0B1220] border border-[#E2E8F0] dark:border-[#374151] text-xs font-mono font-medium text-[#0F172A] dark:text-white shadow-2xs hover:border-[#0F766E]/40 dark:hover:border-[#5EEAD4]/40 hover:bg-white dark:hover:bg-[#111827] transition-all duration-150"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+        {TECH_STACK.map((cat, idx) => (
+          <motion.div
+            key={cat.title}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.2, delay: idx * 0.04 }}
+            className="p-4 rounded-lg bg-[#FFFFFF] dark:bg-[#18181B] border border-[#E5E7EB] dark:border-[#27272A] space-y-3"
+          >
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0F766E] dark:text-[#14B8A6]">
+              {cat.title}
+            </h3>
 
-export const TechStack = () => {
-  return (
-    <section id="tech-stack-section" className="py-10 sm:py-16">
-      <div className="w-full max-w-7xl mx-auto space-y-10 sm:space-y-12">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4 }}
-          className="space-y-3 max-w-3xl"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0F766E] dark:text-[#5EEAD4] bg-[#0F766E]/10 px-2.5 py-0.5 rounded">
-              TECH STACK
-            </span>
-            <span className="h-[1px] w-8 bg-[#0F766E]/30" />
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-            Technologies I Build With
-          </h2>
-
-          <p className="text-base sm:text-lg text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
-            A carefully selected set of technologies I use to design, develop and deploy modern AI-powered software products.
-          </p>
-        </motion.div>
-
-        {/* 2-Column Responsive Dashboard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {TECH_CATEGORIES.map((category, index) => (
-            <TechCard key={category.id} category={category} index={index} />
-          ))}
-        </div>
+            <div className="flex flex-wrap gap-1.5">
+              {cat.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-2.5 py-1 text-xs font-medium rounded-md bg-[#FAFAFA] dark:bg-[#09090B] text-[#111827] dark:text-[#FAFAFA] border border-[#E5E7EB] dark:border-[#27272A]"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
 export default TechStack;
-

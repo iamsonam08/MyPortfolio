@@ -1,29 +1,25 @@
 import { Hero } from '../components/Hero';
-import { TrustAchievements } from '../components/TrustAchievements';
+import { Skills } from '../components/Skills';
 import { FeaturedProjects } from '../components/FeaturedProjects';
-import { TechStack } from '../components/TechStack';
 import { About } from '../components/About';
 import { HomeCTA } from '../components/HomeCTA';
 
 export const Home = () => {
   return (
     <div id="page-home" className="space-y-12 sm:space-y-16">
-      {/* Recruiter-focused Hero Section */}
+      {/* Hero Section */}
       <Hero />
 
-      {/* Recruiter-focused Trust & Achievements Section */}
-      <TrustAchievements />
+      {/* Skills Section */}
+      <Skills />
 
-      {/* Recruiter-focused Featured Projects Showcase */}
+      {/* Featured Projects Showcase */}
       <FeaturedProjects />
 
-      {/* Engineering Dashboard Tech Stack */}
-      <TechStack />
-
-      {/* Recruiter-focused About Me Section */}
+      {/* About Me Section */}
       <About />
 
-      {/* Final Call to Action Section */}
+      {/* Final Call to Action */}
       <HomeCTA />
     </div>
   );

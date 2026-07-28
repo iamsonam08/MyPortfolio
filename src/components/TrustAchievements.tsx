@@ -7,7 +7,7 @@ import {
   Medal,
   BarChart3,
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 interface AchievementItem {
   id: string;
@@ -69,33 +69,30 @@ interface AchievementCardProps {
 
 const AchievementCard: React.FC<AchievementCardProps> = ({ achievement, index }) => {
   const Icon = achievement.icon;
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.35, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1.0] }}
-      className="saas-card flex flex-col justify-between p-6 hover:-translate-y-0.5 hover:border-[#0F766E]/40 hover:shadow-md transition-all duration-200 group cursor-default"
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ duration: 0.2, delay: index * 0.03 }}
+      className="p-4 rounded-md bg-[#111111] border border-[#1F2937] hover:border-[#374151] transition-colors duration-150 space-y-3"
     >
-      <div className="space-y-4">
-        {/* Outline Icon */}
-        <div className="w-10 h-10 rounded-lg bg-[#0F766E]/10 border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] dark:text-[#5EEAD4] group-hover:scale-105 transition-transform duration-200">
-          <Icon className="w-5 h-5" />
+      <div className="flex items-center justify-between">
+        <div className="w-7 h-7 rounded bg-[#1A1A1A] border border-[#1F2937] flex items-center justify-center text-[#14B8A6]">
+          <Icon className="w-3.5 h-3.5" />
         </div>
+        <span className="text-xl font-bold font-mono text-[#F8FAFC]">
+          {achievement.stat}
+        </span>
+      </div>
 
-        {/* Large Stat Number */}
-        <div>
-          <div className="text-3xl sm:text-4xl font-extrabold font-mono tracking-tight text-[#0F172A] dark:text-white">
-            {achievement.stat}
-          </div>
-          <h3 className="text-base font-bold text-[#0F172A] dark:text-white mt-1">
-            {achievement.title}
-          </h3>
-        </div>
-
-        {/* One-Line Description */}
-        <p className="text-xs sm:text-sm text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
+      <div className="space-y-1">
+        <h3 className="text-xs font-bold text-[#F8FAFC]">
+          {achievement.title}
+        </h3>
+        <p className="text-xs text-[#9CA3AF] leading-relaxed">
           {achievement.description}
         </p>
       </div>
@@ -105,38 +102,25 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ achievement, index })
 
 export const TrustAchievements = () => {
   return (
-    <section id="trust-achievements-section" className="py-12 sm:py-16">
-      <div className="w-full max-w-7xl mx-auto space-y-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4 }}
-          className="space-y-3 max-w-3xl"
-        >
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#0F766E] dark:text-[#5EEAD4]">
-              ACHIEVEMENTS
-            </span>
-            <span className="h-[1px] w-8 bg-[#0F766E]/30" />
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0F172A] dark:text-white">
-            Numbers That Reflect My Journey
-          </h2>
-
-          <p className="text-base sm:text-lg text-[#475569] dark:text-[#D1D5DB] leading-relaxed">
-            A quick overview of measurable achievements across problem solving, leadership, learning and real-world experience.
-          </p>
-        </motion.div>
-
-        {/* Achievement Cards Grid (Desktop 6, Tablet 3x2, Mobile 2x3) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-          {ACHIEVEMENTS_DATA.map((item, index) => (
-            <AchievementCard key={item.id} achievement={item} index={index} />
-          ))}
+    <section id="trust-achievements-section" className="space-y-6">
+      {/* Section Header */}
+      <div className="space-y-1">
+        <div className="text-xs font-mono font-medium uppercase tracking-wider text-[#14B8A6]">
+          ACHIEVEMENTS
         </div>
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F8FAFC]">
+          Numbers That Reflect My Journey
+        </h2>
+        <p className="text-xs sm:text-sm text-[#9CA3AF]">
+          A quick overview of measurable achievements across problem solving, leadership, learning and real-world experience.
+        </p>
+      </div>
+
+      {/* Achievement Cards Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        {ACHIEVEMENTS_DATA.map((item, index) => (
+          <AchievementCard key={item.id} achievement={item} index={index} />
+        ))}
       </div>
     </section>
   );

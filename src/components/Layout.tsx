@@ -14,16 +14,16 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] dark:bg-[#0B1220] text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-250">
+    <div className="min-h-screen flex flex-col bg-[#EFEFEF] text-[#1E2525] font-sans antialiased">
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8 }}
-          transition={{ duration: shouldReduceMotion ? 0.01 : 0.5, ease: [0.25, 0.1, 0.25, 1.0] }}
-          className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.2 }}
+          className="flex-1 w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-10 sm:py-16"
         >
           {children}
         </motion.main>
@@ -33,4 +33,3 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     </div>
   );
 };
-

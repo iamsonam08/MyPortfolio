@@ -46,7 +46,7 @@ export const ScrollToTop = () => {
           whileTap={{ scale: 0.96 }}
           transition={{ duration: 0.2 }}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-lg bg-[#0F766E] text-white hover:bg-[#115E59] shadow-md border border-[#0F766E]/20 cursor-pointer focus:outline-none"
+          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-lg bg-[#0F766E] text-white hover:bg-[#14B8A6] shadow-md border border-[#1F2937] cursor-pointer focus:outline-none"
         >
           <ArrowUp className="w-4 h-4" />
         </motion.button>

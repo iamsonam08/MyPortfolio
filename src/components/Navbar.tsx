@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Sun, Moon, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { useTheme } from '../context/ThemeContext';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { NavItem } from '../types';
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Projects', path: '/projects' },
+  { label: 'Skills', path: '/skills' },
   { label: 'Experience', path: '/experience' },
   { label: 'Certifications', path: '/certifications' },
   { label: 'About', path: '/about' },
@@ -15,11 +15,9 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export const Navbar = () => {
-  const { resolvedTheme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const shouldReduceMotion = useReducedMotion();
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -38,14 +36,10 @@ export const Navbar = () => {
     };
   }, [mobileMenuOpen]);
 
-  // Handle header background on scroll
+  // Handle header border on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 15) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -55,35 +49,26 @@ export const Navbar = () => {
   return (
     <header
       id="main-header"
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-200 bg-[#EFEFEF]/95 backdrop-blur-md ${
         scrolled
-          ? 'bg-white/95 dark:bg-[#111827]/95 backdrop-blur-md border-b border-[#E2E8F0] dark:border-[#1E293B] shadow-xs'
-          : 'bg-transparent border-b border-transparent'
+          ? 'border-b border-black/10 shadow-xs'
+          : 'border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-16">
           {/* Brand Logo */}
           <NavLink
             id="brand-logo"
             to="/"
-            className="group flex items-center gap-3 focus:outline-none"
+            className="group flex items-center gap-2.5 focus:outline-none"
           >
-            <motion.div
-              whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-              className="w-9 h-9 rounded-lg bg-[#0F172A] text-white dark:bg-[#F8FAFC] dark:text-[#0F172A] flex items-center justify-center font-bold text-xs tracking-wider shadow-xs"
-            >
+            <div className="w-8 h-8 rounded-md bg-[#055C5E] text-[#FFFFFF] flex items-center justify-center font-bold text-xs tracking-tight shadow-xs">
               SY
-            </motion.div>
-            <div className="flex flex-col">
-              <span className="font-semibold text-sm sm:text-base tracking-tight text-[#0F172A] dark:text-[#F8FAFC] group-hover:text-[#0F766E] dark:group-hover:text-[#0F766E] transition-colors">
-                Sonam Yadav
-              </span>
-              <span className="text-[10px] tracking-wider uppercase text-[#475569] dark:text-[#CBD5E1] font-mono">
-                Software Engineer
-              </span>
             </div>
+            <span className="font-semibold text-sm sm:text-base tracking-tight text-[#1E2525] group-hover:text-[#F2B64E] transition-colors">
+              Sonam Yadav
+            </span>
           </NavLink>
 
           {/* Desktop Navigation */}
@@ -93,131 +78,89 @@ export const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
-                  `relative px-3.5 py-2 text-sm font-medium rounded-md transition-colors focus:outline-none ${
+                  `relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${
                     isActive
-                      ? 'text-[#0F766E] dark:text-[#5EEAD4] font-semibold'
-                      : 'text-[#475569] hover:text-[#0F172A] dark:text-[#D1D5DB] dark:hover:text-white'
+                      ? 'text-[#F2B64E] font-semibold'
+                      : 'text-[#1E2525] hover:text-[#F2B64E]'
                   }`
                 }
               >
                 {({ isActive }) => (
-                  <motion.div
-                    whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
-                    whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
-                    transition={{ duration: 0.15 }}
-                    className="relative inline-flex items-center justify-center"
-                  >
+                  <div className="relative inline-flex items-center justify-center">
                     <span>{item.label}</span>
                     {isActive && (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#0F766E] dark:bg-[#5EEAD4] rounded-full"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#F2B64E] rounded-full"
+                        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
                     )}
-                  </motion.div>
+                  </div>
                 )}
               </NavLink>
             ))}
-
-            {/* Theme Toggle Button */}
-            <motion.button
-              id="theme-toggle-desktop"
-              onClick={toggleTheme}
-              aria-label="Toggle light and dark mode"
-              whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.97, rotate: 180 }}
-              transition={{ duration: 0.2 }}
-              className="ml-3 p-2 rounded-lg text-[#475569] hover:text-[#0F172A] dark:text-[#CBD5E1] dark:hover:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#1F2937] transition-colors focus:outline-none cursor-pointer"
-            >
-              {resolvedTheme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-[#475569]" />
-              )}
-            </motion.button>
           </nav>
 
           {/* Mobile & Tablet Controls */}
-          <div className="flex lg:hidden items-center gap-1.5">
-            <motion.button
-              id="theme-toggle-mobile"
-              onClick={toggleTheme}
-              aria-label="Toggle light and dark mode"
-              whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.97, rotate: 180 }}
-              transition={{ duration: 0.2 }}
-              className="p-2 rounded-lg text-[#475569] hover:text-[#0F172A] dark:text-[#CBD5E1] dark:hover:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#1F2937] transition-colors focus:outline-none cursor-pointer"
-            >
-              {resolvedTheme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-[#475569]" />
-              )}
-            </motion.button>
-
-            <motion.button
+          <div className="flex lg:hidden items-center gap-1">
+            <button
               id="mobile-menu-trigger"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
-              className="p-2 rounded-lg text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#1F2937] transition-colors focus:outline-none cursor-pointer"
+              className="p-2 rounded-md text-[#1E2525] hover:bg-black/5 transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile & Tablet Slide-over Menu Drawer */}
+      {/* Mobile Menu Slide-over Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40 lg:hidden"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
             />
 
-            {/* Slide-over Panel from Right */}
             <motion.div
               id="mobile-menu-drawer"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-[320px] bg-white dark:bg-[#111827] z-50 p-6 shadow-2xl flex flex-col justify-between overflow-y-auto border-l border-[#E2E8F0] dark:border-[#374151] lg:hidden"
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              className="fixed top-0 right-0 bottom-0 w-[260px] bg-[#FFFFFF] z-50 p-5 shadow-xl flex flex-col justify-between border-l border-black/10 lg:hidden"
             >
-              <div className="space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] dark:border-[#374151]">
-                  <span className="font-semibold text-sm tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
+              <div className="space-y-5">
+                <div className="flex items-center justify-between pb-3 border-b border-black/10">
+                  <span className="font-semibold text-xs tracking-wide uppercase text-[#055C5E]">
                     Navigation
                   </span>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 rounded-lg text-[#0F172A] dark:text-[#F8FAFC] hover:bg-[#F1F5F9] dark:hover:bg-[#1F2937] transition-colors cursor-pointer"
+                    className="p-1 rounded-md text-[#1E2525] hover:bg-black/5 transition-colors cursor-pointer"
                     aria-label="Close menu"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
 
-                <nav className="flex flex-col gap-1.5">
+                <nav className="flex flex-col gap-1">
                   {NAV_ITEMS.map((item) => (
                     <NavLink
                       key={item.path}
                       to={item.path}
                       onClick={() => setMobileMenuOpen(false)}
                       className={({ isActive }) =>
-                        `px-4 py-3 text-sm font-medium rounded-xl transition-all ${
+                        `px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                           isActive
-                            ? 'bg-[#0F766E]/10 text-[#0F766E] dark:text-[#5EEAD4] font-semibold border-l-4 border-[#0F766E] dark:border-[#5EEAD4]'
-                            : 'text-[#475569] hover:bg-[#F8FAFC] dark:text-[#CBD5E1] dark:hover:bg-[#1F2937]'
+                            ? 'bg-[#055C5E]/10 text-[#055C5E] font-semibold border-l-2 border-[#F2B64E]'
+                            : 'text-[#1E2525] hover:text-[#F2B64E] hover:bg-[#EFEFEF]'
                         }`
                       }
                     >
@@ -225,26 +168,6 @@ export const Navbar = () => {
                     </NavLink>
                   ))}
                 </nav>
-              </div>
-
-              <div className="pt-6 border-t border-[#E2E8F0] dark:border-[#374151] flex items-center justify-between">
-                <span className="text-xs text-[#64748B] dark:text-[#94A3B8]">Switch Theme</span>
-                <button
-                  onClick={toggleTheme}
-                  className="p-2.5 rounded-xl border border-[#E2E8F0] dark:border-[#374151] bg-[#F8FAFC] dark:bg-[#1E293B] text-[#475569] dark:text-[#CBD5E1] flex items-center gap-2 text-xs font-semibold cursor-pointer"
-                >
-                  {resolvedTheme === 'dark' ? (
-                    <>
-                      <Sun className="w-4 h-4 text-amber-400" />
-                      <span>Light</span>
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="w-4 h-4 text-[#475569]" />
-                      <span>Dark</span>
-                    </>
-                  )}
-                </button>
               </div>
             </motion.div>
           </>
