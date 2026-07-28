@@ -8,7 +8,6 @@ interface ExperienceItem {
   duration: string;
   location?: string;
   bullets: string[];
-  technologies: string[];
 }
 
 const EXPERIENCE_DATA: ExperienceItem[] = [
@@ -23,7 +22,6 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
       'Integrated Firebase REST services and database logic for real-time full-stack data flow.',
       'Optimized component rendering performance and implemented clean Git feature workflows.',
     ],
-    technologies: ['React', 'TypeScript', 'Firebase', 'REST API', 'Git'],
   },
   {
     id: 'exp-codealpha',
@@ -36,7 +34,6 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
       'Refactored application state management to reduce unnecessary re-renders and load times.',
       'Implemented responsive UI layouts and resolved critical bugs across multiple client devices.',
     ],
-    technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Mobile First'],
   },
   {
     id: 'exp-leadership',
@@ -49,7 +46,6 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
       'Led student engineering teams through agile design sprints, code reviews, and deployments.',
       'Designed scalable application architecture and automated build pipelines for high uptime.',
     ],
-    technologies: ['React', 'TypeScript', 'Gemini API', 'Firebase', 'Node.js', 'Vercel'],
   },
   {
     id: 'exp-sih',
@@ -62,7 +58,6 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
       'Secured GDG Hackathon Top 10 finish and 1st Rank in institutional Power BI Data Analytics.',
       'Designed automated data processing pipelines and interactive analytics dashboards.',
     ],
-    technologies: ['React', 'Java', 'Python', 'Power BI', 'SQL'],
   },
 ];
 
@@ -127,18 +122,6 @@ export const Experience: React.FC = () => {
                 </li>
               ))}
             </ul>
-
-            {/* Technology Tags */}
-            <div className="flex flex-wrap gap-1.5 pt-1 border-t border-black/5">
-              {item.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2.5 py-0.5 text-[11px] font-mono rounded-md bg-[#EFEFEF] text-[#055C5E] border border-[#055C5E]/80 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
           </motion.div>
         ))}
       </div>

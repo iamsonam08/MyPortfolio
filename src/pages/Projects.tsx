@@ -1,6 +1,8 @@
 import React from 'react';
-import { ExternalLink, Github, Shield, Building2, BookOpen, Users2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ExternalLink, Shield, Building2, BookOpen, Users2 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { ProjectMockupPreview } from '../components/ProjectMockupPreview';
 
 export interface ProjectItem {
   id: string;
@@ -93,37 +95,7 @@ export const Projects: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Clean Project Screenshot / Mockup Header */}
-                <div className="w-full aspect-[2.5/1] rounded-xl bg-[#EFEFEF] border border-black/10 overflow-hidden relative flex flex-col justify-between p-3 text-[#1E2525]">
-                  {/* Dot Controls */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#EF4444]" />
-                      <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-                      <span className="w-2 h-2 rounded-full bg-[#10B981]" />
-                    </div>
-                    <span className="text-[10px] font-mono text-[#6B7280]">
-                      {project.name.toLowerCase()}.app
-                    </span>
-                  </div>
-
-                  {/* Icon & App Title */}
-                  <div className="my-auto flex items-center justify-center gap-2">
-                    <div className="w-7 h-7 rounded-lg bg-[#FFFFFF] border border-[#055C5E]/20 shadow-xs flex items-center justify-center text-[#055C5E]">
-                      <PreviewIcon className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-semibold tracking-tight text-[#1E2525]">
-                      {project.name}
-                    </span>
-                  </div>
-
-                  {/* Status Indicator */}
-                  <div className="flex items-center justify-end text-[10px] font-mono text-[#055C5E] font-medium">
-                    <span className="inline-flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
-                      Live
-                    </span>
-                  </div>
-                </div>
+                <ProjectMockupPreview projectId={project.id} projectName={project.name} />
 
                 {/* Content */}
                 <div className="space-y-2">
@@ -149,27 +121,27 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Buttons: Equal Width & Height */}
-              <div className="flex items-center gap-3 pt-3 border-t border-black/10">
-                <a
-                  href={project.liveDemoUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary flex-1 justify-center"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  <span>Live Demo</span>
-                </a>
-
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-secondary flex-1 justify-center"
-                >
-                  <Github className="w-3.5 h-3.5 text-[#055C5E]" />
-                  <span>GitHub</span>
-                </a>
+              {/* Action Button: Full Width */}
+              <div className="pt-3 border-t border-black/10">
+                {project.id === 'linex' || !project.liveDemoUrl ? (
+                  <Link
+                    to={`/project/${project.id}`}
+                    className="btn-primary w-full justify-center"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>View Project</span>
+                  </Link>
+                ) : (
+                  <a
+                    href={project.liveDemoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary w-full justify-center"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>View Project</span>
+                  </a>
+                )}
               </div>
             </motion.div>
           );

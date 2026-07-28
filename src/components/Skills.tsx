@@ -1,35 +1,72 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import {
+  Code2,
+  Layout,
+  Server,
+  Database,
+  Cloud,
+  Sparkles,
+  Wrench,
+  BookOpen,
+  LucideIcon
+} from 'lucide-react';
 
-interface SkillGroup {
+interface SkillCategory {
+  id: string;
   title: string;
+  icon: LucideIcon;
   skills: string[];
 }
 
-const SKILL_GROUPS: SkillGroup[] = [
+export const SKILL_CATEGORIES: SkillCategory[] = [
   {
+    id: 'programming',
     title: 'Programming',
+    icon: Code2,
     skills: ['Java', 'Python', 'C++', 'JavaScript'],
   },
   {
+    id: 'frontend',
     title: 'Frontend',
-    skills: ['React', 'HTML', 'CSS', 'Tailwind'],
+    icon: Layout,
+    skills: ['React.js', 'HTML5', 'CSS3', 'Tailwind CSS', 'Responsive Design'],
   },
   {
+    id: 'backend',
     title: 'Backend',
-    skills: ['Node.js', 'Express', 'Firebase'],
+    icon: Server,
+    skills: ['Node.js', 'Express.js', 'Firebase Authentication', 'Cloud Firestore', 'REST APIs'],
   },
   {
+    id: 'database',
     title: 'Database',
-    skills: ['MySQL', 'MongoDB'],
+    icon: Database,
+    skills: ['MySQL', 'MongoDB', 'Cloud Firestore'],
   },
   {
-    title: 'AI',
-    skills: ['Machine Learning', 'Google AI Studio'],
+    id: 'cloud',
+    title: 'Cloud',
+    icon: Cloud,
+    skills: ['Google Cloud', 'Firebase', 'Cloud Functions', 'Google Maps API', 'Dialogflow CX'],
   },
   {
-    title: 'Tools',
-    skills: ['Git', 'GitHub', 'VS Code'],
+    id: 'ai',
+    title: 'Artificial Intelligence',
+    icon: Sparkles,
+    skills: ['Machine Learning', 'Prompt Engineering', 'Google AI Studio', 'Gemini API', 'AI Agents'],
+  },
+  {
+    id: 'devtools',
+    title: 'Developer Tools',
+    icon: Wrench,
+    skills: ['Git', 'GitHub', 'VS Code', 'Postman', 'Figma', 'Vercel'],
+  },
+  {
+    id: 'cs-fundamentals',
+    title: 'Computer Science Fundamentals',
+    icon: BookOpen,
+    skills: ['Data Structures', 'Algorithms', 'OOP', 'DBMS', 'Operating Systems', 'Computer Networks'],
   },
 ];
 
@@ -47,33 +84,51 @@ export const Skills: React.FC = () => {
           Skills & Technical Expertise
         </h2>
         <p className="text-xs sm:text-sm text-[#4B5563]">
-          Core technologies, languages, and engineering tools I build with.
+          Core technical competencies across software engineering, full-stack development, AI, and systems.
         </p>
       </div>
 
-      {/* Grouped Minimal Card Layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-        {SKILL_GROUPS.map((group, idx) => (
-          <motion.div
-            key={group.title}
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-20px' }}
-            transition={{ duration: 0.2, delay: idx * 0.03 }}
-            className="portfolio-card space-y-2.5"
-          >
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#055C5E]">
-              {group.title}
-            </h3>
-            <p className="text-sm font-mono text-[#1E2525] font-medium leading-relaxed">
-              {group.skills.join(' • ')}
-            </p>
-          </motion.div>
-        ))}
+      {/* 8 Skill Cards in Clean Two-Column Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 pt-2">
+        {SKILL_CATEGORIES.map((category, idx) => {
+          const Icon = category.icon;
+          return (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-20px' }}
+              whileHover={{ y: shouldReduceMotion ? 0 : -3 }}
+              transition={{ duration: 0.2, delay: idx * 0.02 }}
+              className="portfolio-card p-5 rounded-xl bg-[#FFFFFF] border border-black/10 shadow-xs hover:shadow-md hover:border-[#055C5E]/30 transition-all duration-200 flex flex-col justify-between space-y-4"
+            >
+              <div className="flex items-center gap-3 border-b border-black/5 pb-3">
+                <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0 border border-[#055C5E]/15">
+                  <Icon className="w-4 h-4 text-[#055C5E]" />
+                </div>
+                <h3 className="text-sm font-bold tracking-tight text-[#1E2525]">
+                  {category.title}
+                </h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[#EFEFEF] text-[#1E2525] border border-black/5 hover:bg-[#055C5E] hover:text-white hover:border-[#055C5E] transition-colors cursor-default"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
 export default Skills;
+
 

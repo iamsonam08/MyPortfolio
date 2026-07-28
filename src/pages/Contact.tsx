@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Mail, Phone, MapPin, Linkedin, Github, Code2, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Github, Code2, ExternalLink } from 'lucide-react';
 import { DownloadResumeButton } from '../components/DownloadResumeButton';
 
 export const Contact: React.FC = () => {
@@ -21,93 +21,132 @@ export const Contact: React.FC = () => {
         </p>
       </div>
 
-      {/* Minimal Links Stack */}
+      {/* Minimal Links Stack / Professional List */}
       <motion.div
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.2 }}
-        className="portfolio-card space-y-4"
+        className="portfolio-card space-y-3 p-4 sm:p-5"
       >
         {/* Email */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-black/10">
+        <a
+          href="mailto:yadusonam08@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Sonam,%20I%20found%20your%20portfolio."
+          target="_self"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between p-3 rounded-lg bg-[#F8FAFC] border border-black/5 hover:border-[#055C5E]/30 hover:bg-[#F1F5F9] transition-all group cursor-pointer"
+        >
           <div className="flex items-center gap-3">
-            <Mail className="w-4 h-4 text-[#055C5E]" />
-            <span className="text-xs sm:text-sm font-semibold text-[#1E2525]">Email</span>
+            <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0">
+              <Mail className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#1E2525]">Email</div>
+              <div className="text-xs sm:text-sm font-mono font-medium text-[#055C5E] group-hover:underline">
+                yadusonam08@gmail.com
+              </div>
+            </div>
           </div>
-          <a
-            href="mailto:yadusonam08@gmail.com"
-            className="text-xs sm:text-sm font-mono font-medium text-[#055C5E] hover:underline"
-          >
-            yadusonam08@gmail.com
-          </a>
-        </div>
+          <ExternalLink className="w-4 h-4 text-[#64748B] group-hover:text-[#055C5E] transition-colors" />
+        </a>
 
         {/* Location */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-black/10">
+        <a
+          href="https://maps.google.com/?q=Baramati,Maharashtra,India"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-between p-3 rounded-lg bg-[#F8FAFC] border border-black/5 hover:border-[#055C5E]/30 hover:bg-[#F1F5F9] transition-all group cursor-pointer"
+        >
           <div className="flex items-center gap-3">
-            <MapPin className="w-4 h-4 text-[#055C5E]" />
-            <span className="text-xs sm:text-sm font-semibold text-[#1E2525]">Location</span>
+            <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0">
+              <MapPin className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#1E2525]">Location</div>
+              <div className="text-xs sm:text-sm font-mono text-[#1E2525]">
+                Baramati, Maharashtra, India
+              </div>
+            </div>
           </div>
-          <span className="text-xs sm:text-sm font-mono text-[#1E2525]">
-            Baramati, Maharashtra
-          </span>
-        </div>
+          <ExternalLink className="w-4 h-4 text-[#64748B] group-hover:text-[#055C5E] transition-colors" />
+        </a>
 
         {/* LinkedIn */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-black/10">
+        <a
+          href="https://www.linkedin.com/in/sonam-yadav-949489316/"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-between p-3 rounded-lg bg-[#F8FAFC] border border-black/5 hover:border-[#055C5E]/30 hover:bg-[#F1F5F9] transition-all group cursor-pointer"
+        >
           <div className="flex items-center gap-3">
-            <Linkedin className="w-4 h-4 text-[#055C5E]" />
-            <span className="text-xs sm:text-sm font-semibold text-[#1E2525]">LinkedIn</span>
+            <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0">
+              <Linkedin className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#1E2525]">LinkedIn</div>
+              <div className="text-xs sm:text-sm font-mono text-[#055C5E] group-hover:underline">
+                in/sonam-yadav
+              </div>
+            </div>
           </div>
-          <a
-            href="https://www.linkedin.com/in/sonam-yadav-949489316/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-medium text-[#055C5E] hover:underline"
-          >
-            <span>in/sonam-yadav</span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#055C5E]" />
-          </a>
-        </div>
+          <ExternalLink className="w-4 h-4 text-[#64748B] group-hover:text-[#055C5E] transition-colors" />
+        </a>
 
         {/* GitHub */}
-        <div className="flex items-center justify-between pb-3.5 border-b border-black/10">
+        <a
+          href="https://github.com/iamsonam08"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-between p-3 rounded-lg bg-[#F8FAFC] border border-black/5 hover:border-[#055C5E]/30 hover:bg-[#F1F5F9] transition-all group cursor-pointer"
+        >
           <div className="flex items-center gap-3">
-            <Github className="w-4 h-4 text-[#055C5E]" />
-            <span className="text-xs sm:text-sm font-semibold text-[#1E2525]">GitHub</span>
+            <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0">
+              <Github className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#1E2525]">GitHub</div>
+              <div className="text-xs sm:text-sm font-mono text-[#055C5E] group-hover:underline">
+                iamsonam08
+              </div>
+            </div>
           </div>
-          <a
-            href="https://github.com/iamsonam08"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-medium text-[#055C5E] hover:underline"
-          >
-            <span>iamsonam08</span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#055C5E]" />
-          </a>
-        </div>
+          <ExternalLink className="w-4 h-4 text-[#64748B] group-hover:text-[#055C5E] transition-colors" />
+        </a>
 
         {/* LeetCode */}
-        <div className="flex items-center justify-between">
+        <a
+          href="https://leetcode.com/u/iamsonam08_06/"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center justify-between p-3 rounded-lg bg-[#F8FAFC] border border-black/5 hover:border-[#055C5E]/30 hover:bg-[#F1F5F9] transition-all group cursor-pointer"
+        >
           <div className="flex items-center gap-3">
-            <Code2 className="w-4 h-4 text-[#055C5E]" />
-            <span className="text-xs sm:text-sm font-semibold text-[#1E2525]">LeetCode</span>
+            <div className="w-8 h-8 rounded-lg bg-[#055C5E]/10 text-[#055C5E] flex items-center justify-center shrink-0">
+              <Code2 className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-semibold text-[#1E2525]">LeetCode</div>
+              <div className="text-xs sm:text-sm font-mono text-[#055C5E] group-hover:underline">
+                iamsonam08_06
+              </div>
+            </div>
           </div>
-          <a
-            href="https://leetcode.com/u/iamsonam08_06/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-medium text-[#055C5E] hover:underline"
-          >
-            <span>iamsonam08_06</span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#055C5E]" />
-          </a>
-        </div>
+          <ExternalLink className="w-4 h-4 text-[#64748B] group-hover:text-[#055C5E] transition-colors" />
+        </a>
       </motion.div>
 
-      {/* Resume Download Action */}
-      <div className="pt-2 flex justify-start">
+      {/* Call-to-action buttons */}
+      <div className="pt-2 flex flex-wrap items-center gap-3">
         <DownloadResumeButton />
+        <a
+          href="mailto:yadusonam08@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Sonam,%20I%20found%20your%20portfolio."
+          target="_self"
+          rel="noopener noreferrer"
+          className="btn-primary"
+          aria-label="Contact Sonam Yadav via email"
+        >
+          <Mail className="w-3.5 h-3.5 shrink-0" />
+          <span>Contact Me (Email)</span>
+        </a>
       </div>
     </div>
   );

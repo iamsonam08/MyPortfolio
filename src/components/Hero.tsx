@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Mail, User } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { DownloadResumeButton } from './DownloadResumeButton';
+import { QuickHighlights } from './TrustAchievements';
 
 export const Hero = () => {
   const shouldReduceMotion = useReducedMotion();
@@ -133,58 +134,8 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Minimal Stats Overview Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, delay: 0.12 }}
-        className="pt-6 sm:pt-8 border-t border-black/10 grid grid-cols-2 sm:grid-cols-5 gap-4"
-      >
-        <div>
-          <div className="text-xl sm:text-2xl font-bold font-mono text-[#055C5E]">
-            300+
-          </div>
-          <div className="text-xs text-[#4B5563] mt-0.5 font-medium">
-            DSA Problems
-          </div>
-        </div>
-
-        <div>
-          <div className="text-xl sm:text-2xl font-bold font-mono text-[#055C5E]">
-            7+
-          </div>
-          <div className="text-xs text-[#4B5563] mt-0.5 font-medium">
-            Hackathons
-          </div>
-        </div>
-
-        <div>
-          <div className="text-xl sm:text-2xl font-bold font-mono text-[#055C5E]">
-            4
-          </div>
-          <div className="text-xs text-[#4B5563] mt-0.5 font-medium">
-            Key Projects
-          </div>
-        </div>
-
-        <div>
-          <div className="text-xl sm:text-2xl font-bold font-mono text-[#055C5E]">
-            2
-          </div>
-          <div className="text-xs text-[#4B5563] mt-0.5 font-medium">
-            Internships
-          </div>
-        </div>
-
-        <div>
-          <div className="text-xl sm:text-2xl font-bold font-mono text-[#055C5E]">
-            9.5+
-          </div>
-          <div className="text-xs text-[#4B5563] mt-0.5 font-medium">
-            Academic CGPA
-          </div>
-        </div>
-      </motion.div>
+      {/* Redesigned Quick Highlights Section */}
+      <QuickHighlights />
     </section>
   );
 };

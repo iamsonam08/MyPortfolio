@@ -1,65 +1,34 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Mail, Github, Linkedin } from 'lucide-react';
 
 export const About: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="about-section" className="space-y-6">
+    <section id="about-section" className="bg-[#EFEFEF] py-2 space-y-4">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#14B8A6]">
+      <div>
+        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#055C5E] block mb-2">
           ABOUT
         </span>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F8FAFC]">
+        <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold tracking-tight text-[#1E2525] lg:leading-tight mb-2">
           About Me
         </h2>
-        <p className="text-xs sm:text-sm text-[#9CA3AF]">
-          A brief look into my engineering background and software philosophy.
+        <p className="text-xs sm:text-sm text-[#5A5A5A]">
+          A little about my background and interests.
         </p>
       </div>
 
+      {/* Body Text */}
       <motion.p
         initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.2 }}
-        className="text-sm sm:text-base text-[#D1D5DB] leading-relaxed max-w-3xl"
+        className="text-sm sm:text-base lg:text-lg text-[#1E2525]/90 leading-[1.8] max-w-3xl"
       >
-        Driven by curiosity and software craft, I approach engineering as a discipline of clarity, performance, and modularity. Whether architecting intuitive web interfaces, optimizing algorithmic logic, or designing intelligent AI workflows, my focus is on building resilient systems that solve real-world problems efficiently.
+        I'm a third-year Computer Engineering student with a strong interest in Full Stack Development and Artificial Intelligence. I enjoy building practical applications that solve real-world problems and continuously improving my skills through projects, internships, hackathons, and DSA.
       </motion.p>
-
-      {/* Social Links */}
-      <div className="flex flex-wrap items-center gap-3 pt-1">
-        <a
-          href="mailto:yadusonam08@gmail.com"
-          className="btn-secondary"
-        >
-          <Mail className="w-3.5 h-3.5 text-[#14B8A6]" />
-          <span>Email</span>
-        </a>
-
-        <a
-          href="https://github.com/iamsonam08"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary"
-        >
-          <Github className="w-3.5 h-3.5 text-[#9CA3AF]" />
-          <span>GitHub</span>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/sonam-yadav-949489316/"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-secondary"
-        >
-          <Linkedin className="w-3.5 h-3.5 text-[#0077B5]" />
-          <span>LinkedIn</span>
-        </a>
-      </div>
     </section>
   );
 };
