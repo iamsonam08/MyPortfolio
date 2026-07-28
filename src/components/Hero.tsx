@@ -28,29 +28,29 @@ export const Hero = () => {
   };
 
   return (
-    <section id="hero-section" className="py-4 sm:py-8 space-y-8 sm:space-y-10">
-      {/* Top Status Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 4 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2 }}
-        className="flex items-center gap-2"
-      >
-        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#FFFFFF] border border-black/10 text-[#055C5E] text-xs font-mono font-semibold tracking-wide shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-[#055C5E] animate-pulse" />
-          <span>Open to Software Engineering & AI Roles</span>
-        </span>
-      </motion.div>
-
+    <section id="hero-section" className="pt-0 sm:pt-1 pb-1 sm:pb-2 space-y-5 sm:space-y-6">
       {/* Main Two-Column Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
         {/* Left Column: Name, Title, Intro & Buttons */}
-        <div className="md:col-span-7 space-y-6">
+        <div className="md:col-span-7 space-y-3.5">
+          {/* Top Status Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex items-center gap-2"
+          >
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#FFFFFF] border border-black/10 text-[#055C5E] text-xs font-mono font-semibold tracking-wide shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#055C5E] animate-pulse" />
+              <span>Open to Software Engineering & AI Roles</span>
+            </span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.04 }}
-            className="space-y-3"
+            className="space-y-2"
           >
             {/* Visual Hierarchy: Bold, Dominant Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1E2525]">
@@ -65,7 +65,7 @@ export const Hero = () => {
               <span>AI Enthusiast</span>
             </div>
 
-            <div className="space-y-2 text-sm sm:text-base text-[#4B5563] leading-relaxed pt-1 max-w-xl">
+            <div className="space-y-1.5 text-sm sm:text-base text-[#4B5563] leading-relaxed pt-0.5 max-w-xl">
               <p>Computer Engineering student with a strong interest in Full Stack Development and Artificial Intelligence.</p>
               <p>I enjoy building practical software that solves real-world problems through clean and user-focused solutions.</p>
               <p>Passionate about continuous learning, problem solving, and creating reliable applications with modern technologies.</p>
@@ -77,7 +77,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, delay: 0.08 }}
-            className="flex flex-wrap items-center gap-3 pt-1"
+            className="flex flex-wrap items-center gap-3 pt-0.5"
           >
             <Link
               id="hero-cta-projects"
@@ -106,7 +106,7 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.25, delay: 0.06 }}
-          className="md:col-span-5 flex justify-center md:justify-end"
+          className="md:col-span-5 flex justify-center md:justify-end items-center"
         >
           <div className="relative">
             {/* Clean Circular Portrait with subtle shadow and no visible border */}
