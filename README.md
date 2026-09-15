@@ -51,14 +51,3 @@ The portfolio includes:
 - Resume
 - Competitive programming profile
 
-## 📂 Repository Structure
-
-```text
-MyPortfolio/
-├── src/
-├── assets/
-├── index.html
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
